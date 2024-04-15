@@ -70,7 +70,7 @@ class Owner(models.Model):
 
 class Information(models.Model):
     """
-    Модель, представляющая сущность контактной информации.
+    Модель, представляющая контактную информацию.
 
     :ivar information_type: Тип информации (телефон, электронная почта и т. д.).
     :type information_type: ForeignKey
@@ -88,7 +88,7 @@ class Information(models.Model):
 
     def __str__(self) -> str:
         """
-        Возвращает строковое представление сущности контактной информации.
+        Возвращает строковое представление контактной информации.
 
         :rtype: str
         """

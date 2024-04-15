@@ -2,6 +2,16 @@ from django.db import models
 
 
 class Person(models.Model):
+    """
+    Модель, представляющая физическое лицо.
+
+    :ivar surname: Фамилия физического лица.
+    :type surname: ForeignKey
+    :ivar name: Имя физического лица.
+    :type name: ForeignKey
+    :ivar patronymic: Отчество физического лица.
+    :type patronymic: ForeignKey
+    """
     surname = models.ForeignKey(
         'Surname', on_delete=models.CASCADE, verbose_name='Фамилия'
     )
@@ -12,7 +22,12 @@ class Person(models.Model):
         'Patronymic', null=True, blank=True, on_delete=models.CASCADE, verbose_name='Отчество'
     )
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+        Возвращает строковое представление физического лица.
+
+        :rtype: str
+        """
         surname = self.surname.surname
         name = self.name.name
         patronymic = " " + self.patronymic.patronymic if self.patronymic else ''
@@ -26,11 +41,22 @@ class Person(models.Model):
 
 
 class Surname(models.Model):
+    """
+    Модель, представляющая фамилию физического лица.
+
+    :ivar surname: Фамилия физического лица.
+    :type surname: CharField
+    """
     surname = models.CharField(
         max_length=130, unique=True, null=False, blank=False, verbose_name='Фамилия'
     )
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+        Возвращает строковое представление фамилии физического лица.
+
+        :rtype: str
+        """
         return self.surname
 
     class Meta:
@@ -41,11 +67,22 @@ class Surname(models.Model):
 
 
 class Name(models.Model):
+    """
+    Модель, представляющая имя физического лица.
+
+    :ivar name: Имя физического лица.
+    :type name: CharField
+    """
     name = models.CharField(
         max_length=130, unique=True, null=False, blank=False, verbose_name='Имя'
     )
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+        Возвращает строковое представление имени физического лица.
+
+        :rtype: str
+        """
         return self.name
 
     class Meta:
@@ -56,11 +93,22 @@ class Name(models.Model):
 
 
 class Patronymic(models.Model):
+    """
+    Модель, представляющая отчество физического лица.
+
+    :ivar patronymic: Отчество физического лица.
+    :type patronymic: CharField
+    """
     patronymic = models.CharField(
         max_length=130, unique=True, null=False, blank=False, verbose_name='Фамилия'
     )
 
-    def __str__(self):
+    def __str__(self) -> str:
+        """
+        Возвращает строковое представление отчества физического лица.
+
+        :rtype: str
+        """
         return self.patronymic
 
     class Meta:

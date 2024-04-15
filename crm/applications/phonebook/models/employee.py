@@ -37,32 +37,6 @@ class Employee(models.Model):
         # ordering = ['organization', 'person.surname', 'person.name', 'person.patronymic']
 
 
-class Position(models.Model):
-    """
-    Модель, представляющая должности сотрудника.
-
-    :ivar position: Название должности сотрудника.
-    :type position: CharField
-    """
-    position = models.CharField(
-        max_length=150, unique=True, null=True, blank=True, verbose_name='Должность сотрудника'
-    )
-
-    def __str__(self) -> str:
-        """
-        Возвращает строковое представление должности сотрудника.
-
-        :rtype: str
-        """
-        return self.position
-
-    class Meta:
-        verbose_name = 'Должность сотрудника'
-        verbose_name_plural = 'Должности сотрудников'
-        # TODO Упорядочивание лучше использовать с помощью Proxy-моделей
-        # ordering = ['position']
-
-
 class Department(models.Model):
     """
     Модель, представляющая подразделение организации.
@@ -87,3 +61,29 @@ class Department(models.Model):
         verbose_name_plural = 'Подразделения организаций'
         # TODO Упорядочивание лучше использовать с помощью Proxy-моделей
         # ordering = ['department']
+
+
+class Position(models.Model):
+    """
+    Модель, представляющая должности сотрудника.
+
+    :ivar position: Название должности сотрудника.
+    :type position: CharField
+    """
+    position = models.CharField(
+        max_length=150, unique=True, null=True, blank=True, verbose_name='Должность сотрудника'
+    )
+
+    def __str__(self) -> str:
+        """
+        Возвращает строковое представление должности сотрудника.
+
+        :rtype: str
+        """
+        return self.position
+
+    class Meta:
+        verbose_name = 'Должность сотрудника'
+        verbose_name_plural = 'Должности сотрудников'
+        # TODO Упорядочивание лучше использовать с помощью Proxy-моделей
+        # ordering = ['position']

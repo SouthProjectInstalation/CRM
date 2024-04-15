@@ -15,6 +15,10 @@ from crm.applications.phonebook.models import Contact
 from crm.applications.phonebook.models import Owner
 from crm.applications.phonebook.models import Information
 
+from crm.applications.phonebook.models import Email
+from crm.applications.phonebook.models import Phone
+from crm.applications.phonebook.models import Social
+
 
 admin.site.register(
     [
@@ -29,5 +33,8 @@ admin.site.register(
         Contact,
         Owner,
         Information,
+        Email,
+        Phone,
+        Social,
     ]
 )

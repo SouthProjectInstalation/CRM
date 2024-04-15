@@ -12,3 +12,7 @@ from crm.applications.phonebook.models.employee import Employee
 from crm.applications.phonebook.models.contact import Contact
 from crm.applications.phonebook.models.contact import Owner
 from crm.applications.phonebook.models.contact import Information
+
+from crm.applications.phonebook.models.communication import Email
+from crm.applications.phonebook.models.communication import Phone
+from crm.applications.phonebook.models.communication import Social

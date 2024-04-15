@@ -41,10 +41,11 @@ INSTALLED_APPS = [
     # EXTERNAL APPS
     #   - Django Rest Framework
     'rest_framework',
+    'phonenumber_field',
 
     # INTERNAL APPS
     #   - Phonebook
-    "crm.applications.phonebook.apps.PhonebookConfig"
+    'crm.applications.phonebook.apps.PhonebookConfig',
 ]
 
 # DJANGO REST FRAMEWORK CONFIG
@@ -55,6 +56,10 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.DjangoModelPermissionsOrAnonReadOnly'
     ]
 }
+
+# DJANGO PHONENUMBER_FIELD CONFIG
+PHONENUMBER_DEFAULT_REGION = 'RU'
+PHONENUMBER_DEFAULT_FORMAT = 'INTERNATIONAL'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

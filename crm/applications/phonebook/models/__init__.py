@@ -13,6 +13,8 @@ from crm.applications.phonebook.models.contact import Contact
 from crm.applications.phonebook.models.contact import Owner
 from crm.applications.phonebook.models.contact import Information
 
-from crm.applications.phonebook.models.communication import Email
-from crm.applications.phonebook.models.communication import Phone
-from crm.applications.phonebook.models.communication import Social
+from crm.applications.phonebook.models.contact_methods import Alias
+from crm.applications.phonebook.models.contact_methods import Email
+from crm.applications.phonebook.models.contact_methods import Phone
+from crm.applications.phonebook.models.contact_methods import Social
+from crm.applications.phonebook.models.contact_methods import Messanger

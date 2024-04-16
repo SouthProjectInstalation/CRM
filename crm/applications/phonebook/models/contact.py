@@ -14,10 +14,10 @@ class Contact(models.Model):
     :type information: ManyToManyField
     """
     entity = models.OneToOneField(
-        'Owner', on_delete=models.CASCADE, related_name='contact_owner', verbose_name='Контактное лицо'
+        'Owner', on_delete=models.CASCADE, related_name='phonebook_contact_owner', verbose_name='контактное лицо'
     )
     information = models.ManyToManyField(
-        'Information', blank=True, related_name='contact_information', verbose_name='Контактная информация'
+        'Information', blank=True, related_name='phonebook_contact_information', verbose_name='контактная информация'
     )
 
     def __str__(self) -> str:
@@ -29,27 +29,27 @@ class Contact(models.Model):
         return f'{self.entity}'
 
     class Meta:
-        verbose_name = 'Контакт'
-        verbose_name_plural = 'Контакты'
+        verbose_name = 'контакт'
+        verbose_name_plural = 'контакты'
 
 
 class Owner(models.Model):
     """
     Модель, представляющая владельца контактной информации в телефонной книге.
 
-    :ivar owner_type: Тип сущности (персона, организация или сотрудник).
-    :type owner_type: ForeignKey
+    :ivar type: Тип сущности (персона, организация или сотрудник).
+    :type type: ForeignKey
     :ivar object_id: Идентификатор объекта сущности.
     :type object_id: PositiveBigIntegerField
     :ivar content_object: Обобщенный ключ для связи с конкретным объектом.
     :type content_object: GenericForeignKey
     """
-    owner_type = models.ForeignKey(
-        ContentType, on_delete=models.CASCADE,
+    type = models.ForeignKey(
+        ContentType, on_delete=models.CASCADE, verbose_name='тип контактного лица',
         limit_choices_to=models.Q(app_label='phonebook', model__in=['person', 'organization', 'employee'])
     )
     object_id = models.PositiveBigIntegerField()
-    content_object = GenericForeignKey("owner_type", "object_id")
+    content_object = GenericForeignKey("type", "object_id")
 
     def __str__(self) -> str:
         """
@@ -60,11 +60,13 @@ class Owner(models.Model):
         return f'{self.content_object}'
 
     class Meta:
+        verbose_name = 'контактное лицо'
+        verbose_name_plural = 'контактные лица'
         constraints = [
-            models.UniqueConstraint(fields=['owner_type', 'object_id'], name='unique_contact_entity'),
+            models.UniqueConstraint(fields=['type', 'object_id'], name='phonebook_owner_unique'),
         ]
         indexes = [
-            models.Index(fields=["owner_type", "object_id"]),
+            models.Index(fields=["type", "object_id"], name='phonebook_owner_index'),
         ]
 
 
@@ -72,19 +74,19 @@ class Information(models.Model):
     """
     Модель, представляющая контактную информацию.
 
-    :ivar information_type: Тип информации (телефон, электронная почта и т. д.).
-    :type information_type: ForeignKey
+    :ivar type: Тип информации (телефон, электронная почта и т. д.).
+    :type type: ForeignKey
     :ivar object_id: Идентификатор объекта контактной информации.
     :type object_id: PositiveBigIntegerField
     :ivar content_object: Обобщенный ключ для связи с конкретным объектом.
     :type content_object: GenericForeignKey
     """
-    information_type = models.ForeignKey(
-        ContentType, on_delete=models.CASCADE,
-        limit_choices_to=models.Q(app_label='phonebook', model__in=[])
+    type = models.ForeignKey(
+        ContentType, on_delete=models.CASCADE, verbose_name='контактная информация',
+        limit_choices_to=models.Q(app_label='phonebook', model__in=['email', 'phone', 'social', 'messanger'])
     )
     object_id = models.PositiveBigIntegerField()
-    content_object = GenericForeignKey("information_type", "object_id")
+    content_object = GenericForeignKey("type", "object_id")
 
     def __str__(self) -> str:
         """
@@ -95,9 +97,11 @@ class Information(models.Model):
         return f'{self.content_object}'
 
     class Meta:
+        verbose_name = 'контактная информация'
+        verbose_name_plural = 'контактная информация'
         constraints = [
-            models.UniqueConstraint(fields=['information_type', 'object_id'], name='unique_contact_info'),
+            models.UniqueConstraint(fields=['type', 'object_id'], name='phonebook_information_unique'),
         ]
         indexes = [
-            models.Index(fields=["information_type", "object_id"]),
+            models.Index(fields=["type", "object_id"], name='phonebook_information_index'),
         ]

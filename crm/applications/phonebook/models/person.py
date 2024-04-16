@@ -100,7 +100,7 @@ class Patronymic(models.Model):
     :type patronymic: CharField
     """
     patronymic = models.CharField(
-        max_length=130, unique=True, null=False, blank=False, verbose_name='Фамилия'
+        max_length=130, unique=True, null=False, blank=False, verbose_name='Отчество'
     )
 
     def __str__(self) -> str:

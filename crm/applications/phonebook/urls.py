@@ -15,7 +15,7 @@ from crm.applications.phonebook.views import EmployeeViewSet
 
 from crm.applications.phonebook.views import ContactViewSet
 from crm.applications.phonebook.views import OwnerViewSet
-from crm.applications.phonebook.views import InformationViewSet
+# from crm.applications.phonebook.views import InformationViewSet
 
 from crm.applications.phonebook.views import AliasViewSet
 from crm.applications.phonebook.views import EmailViewSet
@@ -38,7 +38,7 @@ router.register(r'employees', EmployeeViewSet)
 
 router.register(r'contacts', ContactViewSet)
 router.register(r'owners', OwnerViewSet)
-router.register(r'information', InformationViewSet)
+# router.register(r'information', InformationViewSet)
 
 router.register(r'alias', AliasViewSet)
 router.register(r'emails', EmailViewSet)

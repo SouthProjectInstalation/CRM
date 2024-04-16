@@ -1,3 +1,5 @@
+from crm.applications.phonebook.serializers.django_framework import ContentTypeSerializer
+
 from crm.applications.phonebook.serializers.person import PersonSerializer
 from crm.applications.phonebook.serializers.person import SurnameSerializer
 from crm.applications.phonebook.serializers.person import NameSerializer
@@ -11,7 +13,7 @@ from crm.applications.phonebook.serializers.employee import EmployeeSerializer
 
 from crm.applications.phonebook.serializers.contact import ContactSerializer
 from crm.applications.phonebook.serializers.contact import OwnerSerializer
-from crm.applications.phonebook.serializers.contact import InformationSerializer
+# from crm.applications.phonebook.serializers.contact import InformationSerializer
 
 from crm.applications.phonebook.serializers.contact_methods import AliasSerializer
 from crm.applications.phonebook.serializers.contact_methods import EmailSerializer

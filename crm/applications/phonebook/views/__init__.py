@@ -11,7 +11,7 @@ from crm.applications.phonebook.views.employee import EmployeeViewSet
 
 from crm.applications.phonebook.views.contact import ContactViewSet
 from crm.applications.phonebook.views.contact import OwnerViewSet
-from crm.applications.phonebook.views.contact import InformationViewSet
+# from crm.applications.phonebook.views.contact import InformationViewSet
 
 from crm.applications.phonebook.views.contact_methods import AliasViewSet
 from crm.applications.phonebook.views.contact_methods import EmailViewSet

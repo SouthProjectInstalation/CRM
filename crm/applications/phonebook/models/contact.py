@@ -8,12 +8,12 @@ class Contact(models.Model):
     """
     Модель, представляющая собой контакт в телефонной книге.
 
-    :ivar entity: Контактное лицо, связанное с данным контактом.
-    :type entity: OneToOneField
+    :ivar owner: Контактное лицо, связанное с данным контактом.
+    :type owner: OneToOneField
     :ivar information: Контактная информация, связанная с данным контактом.
     :type information: ManyToManyField
     """
-    entity = models.OneToOneField(
+    owner = models.OneToOneField(
         'Owner', on_delete=models.CASCADE, related_name='phonebook_contact_owner', verbose_name='контактное лицо'
     )
     information = models.ManyToManyField(
@@ -26,7 +26,7 @@ class Contact(models.Model):
 
         :rtype: str
         """
-        return f'{self.entity}'
+        return f'{self.owner}'
 
     class Meta:
         verbose_name = 'контакт'

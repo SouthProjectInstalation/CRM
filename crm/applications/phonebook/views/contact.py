@@ -6,7 +6,7 @@ from crm.applications.phonebook.models import Information
 
 from crm.applications.phonebook.serializers import ContactSerializer
 from crm.applications.phonebook.serializers import OwnerSerializer
-from crm.applications.phonebook.serializers import InformationSerializer
+# from crm.applications.phonebook.serializers import InformationSerializer
 
 
 class ContactViewSet(viewsets.ModelViewSet):
@@ -19,6 +19,6 @@ class OwnerViewSet(viewsets.ModelViewSet):
     serializer_class = OwnerSerializer
 
 
-class InformationViewSet(viewsets.ModelViewSet):
-    queryset = Information.objects.all()
-    serializer_class = InformationSerializer
+# class InformationViewSet(viewsets.ModelViewSet):
+#     queryset = Information.objects.all()
+#     serializer_class = InformationSerializer
